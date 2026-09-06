@@ -9,7 +9,7 @@
  * Until a file exists, the site shows an elegant placeholder instead.
  */
 
-export const HER_NAME = "My Love";
+export const HER_NAME = "Putii";
 export const AGE = 20;
 
 export const MUSIC_SRC = "/media/music.mp3";
