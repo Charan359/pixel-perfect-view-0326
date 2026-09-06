@@ -86,7 +86,7 @@ export function CandleStage({ onFinished }: { onFinished: () => void }) {
   const [revealed, setRevealed] = useState(false);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const memory = MEMORIES[current];
+  const memory = MEMORIES[current]!;
 
   const stopBlow = () => {
     if (timer.current) clearInterval(timer.current);
