@@ -51,27 +51,123 @@ export function OpeningStage({ onNext }: { onNext: () => void }) {
   );
 }
 
-/* ---------------- 2. Wish ---------------- */
+/* ---------------- 2. Wish — cupid's arrow ---------------- */
+
+const BURST = [
+  { bx: "-70px", by: "-64px", size: 14 },
+  { bx: "64px", by: "-78px", size: 18 },
+  { bx: "-96px", by: "6px", size: 12 },
+  { bx: "92px", by: "12px", size: 14 },
+  { bx: "-46px", by: "72px", size: 16 },
+  { bx: "52px", by: "66px", size: 12 },
+  { bx: "0px", by: "-96px", size: 15 },
+  { bx: "10px", by: "88px", size: 13 },
+];
 
 export function WishStage({ onNext }: { onNext: () => void }) {
   return (
     <section className={shell}>
-      <h2 className="animate-fade-rise text-gradient-gold text-4xl sm:text-5xl">{WISH.title}</h2>
-      <div className="mt-10 space-y-6">
-        {WISH.lines.map((line, i) => (
-          <p
-            key={i}
-            className="animate-fade-rise font-display text-xl leading-relaxed text-foreground/90 sm:text-2xl"
-            style={{ animationDelay: `${0.6 + i * 0.9}s` }}
-          >
-            {line}
-          </p>
-        ))}
+      <p className="animate-fade-soft text-xs tracking-[0.4em] uppercase text-blush/80">
+        {WISH.kicker}
+      </p>
+
+      {/* the scene: bow → arrow → heart */}
+      <div className="relative mt-6 h-64 w-full max-w-lg">
+        {/* bow */}
+        <svg
+          viewBox="0 0 120 160"
+          aria-hidden
+          className="absolute top-1/2 left-0 h-40 w-auto -translate-y-1/2 text-gold"
+          style={{
+            animation:
+              "bow-in 0.9s var(--ease-cinematic) 0.3s both, bow-out 0.7s ease 2.7s both",
+          }}
+        >
+          <path
+            d="M34 8 Q96 80 34 152"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="5"
+            strokeLinecap="round"
+          />
+          <g className="text-blush/70" stroke="currentColor" strokeWidth="1.5" fill="none">
+            <path
+              d="M34 8 L72 80 L34 152"
+              style={{ animation: "string-pulled 1.9s linear 0.7s both" }}
+            />
+            <line
+              x1="34"
+              y1="8"
+              x2="34"
+              y2="152"
+              style={{ animation: "string-straight 1.9s linear 0.7s both" }}
+            />
+          </g>
+        </svg>
+
+        {/* arrow */}
+        <div
+          aria-hidden
+          className="absolute top-1/2 flex -translate-y-1/2 items-center text-gold"
+          style={{
+            animation:
+              "arrow-fly 1.9s cubic-bezier(0.4,0,0.7,1) 0.7s both, arrow-gone 0.4s ease 3s both",
+          }}
+        >
+          <span className="h-0.5 w-14 rounded-full bg-[image:var(--gradient-gold)] sm:w-20" />
+          <Heart className="-ml-1 size-4" fill="currentColor" strokeWidth={0} />
+        </div>
+
+        {/* heart + burst */}
+        <div className="absolute top-1/2 right-6 -translate-y-1/2 sm:right-10">
+          <div
+            aria-hidden
+            className="absolute inset-0 -z-10 rounded-full bg-rose/40 blur-2xl"
+            style={{ animation: "hit-flash 1.4s ease-out 2.55s both" }}
+          />
+          <div style={{ animation: "heart-hit 0.9s var(--ease-cinematic) 2.55s both" }}>
+            <Heart
+              className="animate-soft-pulse size-16 text-rose drop-shadow-[0_0_18px_var(--rose)] sm:size-20"
+              fill="currentColor"
+              strokeWidth={0}
+            />
+          </div>
+          {BURST.map((p, i) => (
+            <Heart
+              key={i}
+              aria-hidden
+              fill="currentColor"
+              strokeWidth={0}
+              className="absolute top-1/2 left-1/2 -mt-2 -ml-2 text-blush"
+              style={{
+                width: p.size,
+                height: p.size,
+                ["--bx" as string]: p.bx,
+                ["--by" as string]: p.by,
+                animation: `heart-burst 1.2s ease-out ${2.55 + i * 0.04}s both`,
+              }}
+            />
+          ))}
+        </div>
       </div>
-      <div
-        className="animate-fade-rise mt-14"
-        style={{ animationDelay: `${0.6 + WISH.lines.length * 0.9}s` }}
+
+      {/* the message */}
+      <h2
+        className="animate-fade-rise text-gradient-gold mt-4 text-5xl sm:text-6xl"
+        style={{ animationDelay: "3.4s" }}
       >
+        {WISH.title}
+      </h2>
+      {WISH.lines.map((line, i) => (
+        <p
+          key={i}
+          className="animate-fade-rise mt-4 font-display text-2xl text-foreground/90 italic sm:text-3xl"
+          style={{ animationDelay: `${4 + i * 0.7}s` }}
+        >
+          {line} ♡
+        </p>
+      ))}
+      <div className="animate-fade-rise mt-12" style={{ animationDelay: "4.8s" }}>
         <GlowButton onClick={onNext}>{WISH.cta}</GlowButton>
       </div>
     </section>
