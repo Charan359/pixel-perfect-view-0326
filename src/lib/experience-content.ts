@@ -66,12 +66,9 @@ export const OPENING = {
 };
 
 export const WISH = {
-  title: "Before we begin",
-  lines: [
-    "Today the world is a little softer, because it's your day.",
-    "Twenty years of you — every one of them worth celebrating.",
-    "I made this so you could feel, for a few minutes, exactly how loved you are.",
-  ],
+  kicker: "Cupid took aim…",
+  title: "Happy 20th Birthday",
+  lines: [`to my dear ${HER_NAME}`],
   cta: "Take me to the cake",
 };
 
