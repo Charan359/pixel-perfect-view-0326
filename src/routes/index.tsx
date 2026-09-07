@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Ambience } from "@/components/experience/Ambience";
 import { MusicToggle } from "@/components/experience/MusicToggle";
 import {
+  CakeIntroStage,
   CandleStage,
   EndingStage,
   NoteStage,

@@ -392,11 +392,16 @@ export function CandleStage({ onFinished }: { onFinished: () => void }) {
           <p className="mt-3 max-w-sm text-sm text-muted-foreground">{CAKE.subtitle}</p>
 
           <div className="relative mt-12 flex w-full flex-col items-center">
-            <div className="flex flex-wrap items-end justify-center gap-x-2 gap-y-3 px-2">
-              {MEMORIES.map((m, i) => (
-                <Candle key={m.id} index={i} lit={i >= current} active={i === current} small />
-              ))}
-            </div>
+            {/* one candle at a time — the surrounding dark keeps the focus on the flame */}
+            <div
+              aria-hidden
+              className="absolute -inset-x-10 -top-16 bottom-0 -z-10"
+              style={{
+                background:
+                  "radial-gradient(45% 40% at 50% 38%, oklch(0.9 0.1 85 / 0.16), transparent 70%)",
+              }}
+            />
+            <Candle index={current} lit active />
             <div
               className="mt-4 h-20 w-64 max-w-full rounded-2xl glass-panel"
               style={{
