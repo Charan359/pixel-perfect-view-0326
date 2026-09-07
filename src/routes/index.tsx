@@ -41,7 +41,8 @@ function Index() {
       <MusicToggle autoStart={stage !== "opening"} />
 
       {stage === "opening" && <OpeningStage onNext={() => setStage("wish")} />}
-      {stage === "wish" && <WishStage onNext={() => setStage("candles")} />}
+      {stage === "wish" && <WishStage onNext={() => setStage("cake")} />}
+      {stage === "cake" && <CakeIntroStage onNext={() => setStage("candles")} />}
       {stage === "candles" && <CandleStage onFinished={() => setStage("note")} />}
       {stage === "note" && <NoteStage onNext={() => setStage("video")} />}
       {stage === "video" && <VideoStage onNext={() => setStage("ending")} />}
