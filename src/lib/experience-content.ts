@@ -78,6 +78,15 @@ export const CAKE = {
   cta: "Blow the candle",
 };
 
+export const CAKE_INTRO = {
+  lines: [
+    "Today isn't just another birthday...",
+    "Today, you turn 20. ❤️",
+    "So let's make a wish...",
+    "Your birthday journey begins now ✨",
+  ],
+};
+
 export const FINAL_NOTE = {
   title: "A note from me",
   body: [
