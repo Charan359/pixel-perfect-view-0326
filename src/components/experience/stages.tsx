@@ -6,6 +6,7 @@ import { Candle } from "./Candle";
 import { MemoryPhoto } from "./MemoryPhoto";
 import {
   CAKE,
+  CAKE_INTRO,
   ENDING,
   FINAL_NOTE,
   FINAL_VIDEO_SRC,
