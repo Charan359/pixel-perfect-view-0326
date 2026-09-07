@@ -30,7 +30,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-type Stage = "opening" | "wish" | "candles" | "note" | "video" | "ending";
+type Stage = "opening" | "wish" | "cake" | "candles" | "note" | "video" | "ending";
 
 function Index() {
   const [stage, setStage] = useState<Stage>("opening");
