@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Ambience } from "@/components/experience/Ambience";
 import { MusicToggle } from "@/components/experience/MusicToggle";
 import {
+  CakeIntroStage,
   CandleStage,
   EndingStage,
   NoteStage,
@@ -29,7 +30,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-type Stage = "opening" | "wish" | "candles" | "note" | "video" | "ending";
+type Stage = "opening" | "wish" | "cake" | "candles" | "note" | "video" | "ending";
 
 function Index() {
   const [stage, setStage] = useState<Stage>("opening");
@@ -40,7 +41,8 @@ function Index() {
       <MusicToggle autoStart={stage !== "opening"} />
 
       {stage === "opening" && <OpeningStage onNext={() => setStage("wish")} />}
-      {stage === "wish" && <WishStage onNext={() => setStage("candles")} />}
+      {stage === "wish" && <WishStage onNext={() => setStage("cake")} />}
+      {stage === "cake" && <CakeIntroStage onNext={() => setStage("candles")} />}
       {stage === "candles" && <CandleStage onFinished={() => setStage("note")} />}
       {stage === "note" && <NoteStage onNext={() => setStage("video")} />}
       {stage === "video" && <VideoStage onNext={() => setStage("ending")} />}
